@@ -1,0 +1,77 @@
+IF FLOAT([field_employee_zip_value]) >= 1000000
+AND FLOAT([field_employee_zip_value]) <= 1999999
+THEN "Centro"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 2000000
+AND FLOAT([field_employee_zip_value]) <= 2999999
+THEN "Zona Norte"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 3000000
+AND FLOAT([field_employee_zip_value]) <= 3999999
+THEN "Zona Leste"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 4000000
+AND FLOAT([field_employee_zip_value]) <= 4999999
+THEN "Zona Sul"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 5000000
+AND FLOAT([field_employee_zip_value]) <= 5999999
+THEN "Zona Oeste"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 6000000
+AND FLOAT([field_employee_zip_value]) <= 6999999
+THEN "Grande Oeste"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 7000000
+AND FLOAT([field_employee_zip_value]) <= 7999999
+THEN "Grande Norte"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 8000000
+AND FLOAT([field_employee_zip_value]) <= 8999999
+THEN "Grande Leste"
+
+ELSEIF FLOAT([field_employee_zip_value]) >= 9000000
+AND FLOAT([field_employee_zip_value]) <= 9999999
+THEN "Grande Sul"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 1000000
+AND FLOAT([field_job_zip_value]) <= 1999999
+THEN "Centro"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 2000000
+AND FLOAT([field_job_zip_value]) <= 2999999
+THEN "Zona Norte"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 3000000
+AND FLOAT([field_job_zip_value]) <= 3999999
+THEN "Zona Leste"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 4000000
+AND FLOAT([field_job_zip_value]) <= 4999999
+THEN "Zona Sul"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 5000000
+AND FLOAT([field_job_zip_value]) <= 5999999
+THEN "Zona Oeste"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 6000000
+AND FLOAT([field_job_zip_value]) <= 6999999
+THEN "Grande Oeste"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 7000000
+AND FLOAT([field_job_zip_value]) <= 7999999
+THEN "Grande Norte"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 8000000
+AND FLOAT([field_job_zip_value]) <= 8999999
+THEN "Grande Leste"
+
+ELSEIF FLOAT([field_job_zip_value]) >= 9000000
+AND FLOAT([field_job_zip_value]) <= 9999999
+THEN "Grande Sul"
+
+ELSE "Other"
+
+END
+
+
