@@ -20,35 +20,17 @@ SELECT `users`.`uid` AS `uid`,
   `profile`.`label` AS `label`,
   `profile`.`created` AS `profile_created`,
   `profile`.`changed` AS `changed`,
-  `field_data_field_desired_cat123`.`entity_id` AS `cat_entity_id`,
-  `field_data_field_desired_cat123`.`field_desired_cat_tid` AS `field_desired_cat_tid`,
   `field_data_field_desired_job123`.`entity_id` AS `job_entity_id`,
   `field_data_field_desired_job123`.`field_desired_job_tid` AS `field_desired_job_tid`,
-  `taxonomy_term_hierarchy`.`parent` AS 'parent',
-  `taxonomy_term_hierarchy`.`tid` AS `taxonomy_term_hierarchy`.`tid`,
-  `taxonomy_term_data`.`name` AS `cat_name`,
-  `taxonomy_term_data`.`tid` AS `cat_tid`
-  
+  `taxonomy_term_hierarchy`.`tid` AS `hierarchy_tid`,
+  `taxonomy_term_hierarchy`.`parent` AS `parent`,
+  `taxonomy_term_data`.`name` AS `job_name`,
+  `taxonomy_term_data`.`tid` AS `job_tid`,
+  `taxonomy_term_data_parent`.`name` AS `cat_name`,
+  `taxonomy_term_data_parent`.`tid` AS `cat_tid`
 
 FROM `users`
   LEFT JOIN `profile` ON (`users`.`uid` = `profile`.`uid`)
-  LEFT JOIN  
-(SELECT   
-`field_data_field_desired_cat1`.`entity_id` AS `entity_id`,
-`field_data_field_desired_cat1`.`field_desired_cat1_tid` AS `field_desired_cat_tid`
-FROM field_data_field_desired_cat1
-UNION ALL
-SELECT   
-`field_data_field_desired_cat2`.`entity_id` AS `entity_id`,
-`field_data_field_desired_cat2`.`field_desired_cat2_tid` AS `field_desired_cat_tid`
-FROM field_data_field_desired_cat2
-UNION ALL
-SELECT   
-`field_data_field_desired_cat3`.`entity_id` AS `entity_id`,
-`field_data_field_desired_cat3`.`field_desired_cat3_tid` AS `field_desired_cat_tid`
-FROM field_data_field_desired_cat3
-) AS field_data_field_desired_cat123
-ON (`profile`.`pid` = `field_data_field_desired_cat123`.`entity_id`)
 
 LEFT JOIN  
 (SELECT   
@@ -69,13 +51,12 @@ FROM field_data_field_desired_job3
 ON (`profile`.`pid` = `field_data_field_desired_job123`.`entity_id`)
 
 LEFT JOIN taxonomy_term_hierarchy
-ON (`taxonomy_term_hierarchy`.`parent` = `field_data_field_desired_cat123`.`field_desired_cat_tid`)
-LEFT JOIN taxonomy_term_hierarchy
 ON (`taxonomy_term_hierarchy`.`tid` = `field_data_field_desired_job123`.`field_desired_job_tid`)
 
-LEFT JOIN taxonomy_term_data 
-ON (`taxonomy_term_data`.`tid` = `taxonomy_term_hierarchy`.`parent`)
 LEFT JOIN taxonomy_term_data
 ON (`taxonomy_term_data`.`tid` = `taxonomy_term_hierarchy`.`tid`)
+LEFT JOIN taxonomy_term_data taxonomy_term_data_parent
+ON (`taxonomy_term_data_parent`.`tid` = `taxonomy_term_hierarchy`.`parent`)
+
 
 WHERE `profile`.`uid` = 342778
